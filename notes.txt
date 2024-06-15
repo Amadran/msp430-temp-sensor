@@ -1,0 +1,18 @@
+- P3 = data bus (DB0 to DB7)
+- P2.0 = E
+- P2.2 = R/W
+- P2.3 = RS
+- RS:
+	0 = instruction register
+	1 = data register
+- R/W:
+	0 = write
+	1 = read
+- E: set to 1 to start data read/write
+
+Different debug bin and driver dirs:
+DEBUG_BIN_DIR =		/usr/bin														-> outdated
+					~/programming/tools/ti/ccs1270/ccs/ccs_base/DebugServer/bin		-> outdated
+					~/programming/tools/mspdebug
+DEBUG_DRIVERS_DIR = /usr/lib
+					~/programming/tools/ti/ccs1270/ccs/ccs_base/DebugServer/drivers
