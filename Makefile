@@ -1,5 +1,5 @@
 # directories
-MSPGCC_ROOT_DIR = ~/programming/tools/msp430-gcc
+MSPGCC_ROOT_DIR = ../../../tools/msp430-gcc
 MSPGCC_BIN_DIR = $(MSPGCC_ROOT_DIR)/bin
 MSPGCC_INCLUDE_DIR =$(MSPGCC_ROOT_DIR)/include
 INCLUDE_DIRS = $(MSPGCC_INCLUDE_DIR)
@@ -16,7 +16,7 @@ GDB = $(MSPGCC_BIN_DIR)/msp430-elf-gdb
 DEBUG = LD_LIBRARY_PATH=$(DEBUG_DRIVERS_DIR) $(DEBUG_BIN_DIR)/mspdebug
 
 # files
-TARGET = $(BIN_DIR)/templcd.elf
+TARGET = $(BIN_DIR)/templcd
 SOURCES = main.c
 OBJECT_NAMES = $(SOURCES:.c=.o)
 OBJECTS = $(patsubst %, $(OBJ_DIR)/%, $(OBJECT_NAMES))

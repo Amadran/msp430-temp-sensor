@@ -7,7 +7,7 @@
 #define DPIN 				P3IN
 #define DPREN				P3REN
 #define CTRLDIR				P2DIR
-#define CTRLOUT				P1OUT
+#define CTRLOUT				P2OUT
 
 // P2:	 7	  6	   5	4	 3	  2	   1	0
 // 		 -- | -- | -- | -- | RS | RW | -- | E
