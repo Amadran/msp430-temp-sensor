@@ -1,5 +1,6 @@
 #include <msp430.h>
 #include <stdint.h>
+#include <stddef.h>
 
 // LCD pin defines
 // DP == "data port"
@@ -39,15 +40,19 @@
 
 #define OPCODE_DISPCLR		0b00000001
 
+// timing constants and functions
+#define NUMCYCLES_40US          1000
+#define NUMCYCLES_45US          1125
+#define NUMCYCLES_1P6MS         40000
+#define NUMCYCLES_MAX           0xffff  // == 2.62144 ms
+#define DELAY(x)                __delay_cycles(x)
 
 
-// e, rw, rs must be 0 or 1
-void set_ctrlout(uint8_t e, uint8_t rw, uint8_t rs); 
 
-// dl:	0 = 4 bits		1 = 8 bits
-// n:	0 = 1 line		1 = 2 lines
-// f:	0 = 5*8 chars	1 = 5*10 chars
-void function_set(uint8_t dl, uint8_t n, uint8_t f);
+//// LCD functions
+void display_clear();
+
+void return_home();
 
 // id:	0 = increment		1 = decrement
 // s:	0 = no shift		1 = display shift
@@ -58,16 +63,34 @@ void entry_mode_set(uint8_t id, uint8_t s);
 // b:	0 = blinking off	1 = blinking on
 void display_ctrl(uint8_t d, uint8_t c, uint8_t b);
 
-void display_clear();
+void cursor_or_display_shift(uint8_t sc, uint8_t rl);
+
+// dl:	0 = 4 bits		1 = 8 bits
+// n:	0 = 1 line		1 = 2 lines
+// f:	0 = 5*8 chars	1 = 5*10 chars
+void function_set(uint8_t dl, uint8_t n, uint8_t f);
+
+void set_cgram_addr(uint8_t addr);
 
 void set_ddram_addr(uint8_t addr);
 
+void read_busy_flag_and_addr(uint8_t* bf_addr);
+
 void write_char(char c);
+
+// void read_char(char* c); // TODO: do I want this?
+
+
+
+//// other functions
+
+// e, rw, rs must be 0 or 1
+void set_ctrlout(uint8_t e, uint8_t rw, uint8_t rs); 
 
 void dp_set_input();
 
 void dp_set_output();
 
-void is_busy_poll();
+void busy_poll();
 
 void init();

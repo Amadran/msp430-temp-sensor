@@ -16,3 +16,10 @@ DEBUG_BIN_DIR =		/usr/bin														-> outdated
 					~/programming/tools/mspdebug
 DEBUG_DRIVERS_DIR = /usr/lib
 					~/programming/tools/ti/ccs1270/ccs/ccs_base/DebugServer/drivers
+
+TODO:
+- query CPU frequency for # cycles needed for certain delay times
+
+Possible improvements:
+- use MSP430 voltage monitoring functionality to check if we need to manually reset LCD
+    - or should we just manually reset always

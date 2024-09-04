@@ -14,6 +14,7 @@ DEBUG_DRIVERS_DIR = /usr/lib
 CC = $(MSPGCC_BIN_DIR)/msp430-elf-gcc
 GDB = $(MSPGCC_BIN_DIR)/msp430-elf-gdb
 DEBUG = LD_LIBRARY_PATH=$(DEBUG_DRIVERS_DIR) $(DEBUG_BIN_DIR)/mspdebug
+CPPCHECK = cppcheck
 
 # files
 TARGET = $(BIN_DIR)/templcd.elf
@@ -43,7 +44,7 @@ $(OBJ_DIR)/%.o: %.c
 	$(CC) -S $(CFLAGS) $(DEBUGFLAGS) -o $@ $^
 
 # phony targets
-.PHONY: all clean assemble
+.PHONY: all clean assemble cppcheck
 
 all: $(TARGET)
 
@@ -61,3 +62,7 @@ gdb_listen: $(TARGET)
 
 gdb_connect: $(TARGET)
 	$(GDB) $(TARGET)
+
+cppcheck:
+	@$(CPPCHECK) --quiet --enable=all --error-exitcode=1 \
+		-I $(INCLUDE_DIRS) $(SOURCES)
