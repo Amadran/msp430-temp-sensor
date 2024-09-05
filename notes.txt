@@ -17,6 +17,9 @@ DEBUG_BIN_DIR =		/usr/bin														-> outdated
 DEBUG_DRIVERS_DIR = /usr/lib
 					~/programming/tools/ti/ccs1270/ccs/ccs_base/DebugServer/drivers
 
+
+
+
 TODO:
 - query CPU frequency for # cycles needed for certain delay times
 
